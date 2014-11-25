@@ -51,13 +51,12 @@ class phpunit(
         timeout     => $timeout,
         verbose     => false,
         require     => Package[$package],
-      }
+      }->
 
       file { 'phpunit-phar':
         ensure  => $ensure,
         mode    => 'a+x',
         path    => $install_path,
-        require => wget::fetch['phpunit-phar-wget'],
       }
     }
     /(absent)/: {
